@@ -1,3 +1,13 @@
-<p>
-  attendance works!
-</p>
+<mat-card>
+  <h1>Attendance</h1>
+
+  <mat-selection-list #shoes>
+    <mat-list-option *ngFor="let student of students">
+      {{student.firstName}} {{student.lastName}}
+    </mat-list-option>
+  </mat-selection-list>
+
+  <p>
+    Options selected: {{students.selectedOptions.selected.length}}
+  </p>
+</mat-card>

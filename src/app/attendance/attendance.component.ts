@@ -6,6 +6,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./attendance.component.css']
 })
 export class AttendanceComponent implements OnInit {
+  students = [
+    { 
+      firstName: 'Sophia',
+      lastName: 'Price'
+    },
+    { 
+      firstName: 'Daniel',
+      lastName: "O'Regan"
+    },
+    { 
+      firstName: 'Seafra',
+      lastName: "O'Grady"
+    },
+    { 
+      firstName: 'Niall',
+      lastName: 'McCafferty'
+    },
+    { 
+      firstName: 'Conor',
+      lastName: 'Booth'
+    },
+    { 
+      firstName: 'Michael',
+      lastName: 'Christie'
+    },
+    
+  ]
 
   constructor() { }
 
