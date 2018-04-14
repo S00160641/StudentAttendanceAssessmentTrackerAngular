@@ -3,7 +3,8 @@
 
 mat-card {
     text-align: center;
-    height:86vh;
+    overflow: auto;
+    height: 82vh;
 }
 
 .form {

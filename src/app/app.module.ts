@@ -13,6 +13,7 @@ import { RegisterComponent } from './register/register.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
+import { AttendanceRecordComponent } from './attendance-record/attendance-record.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -30,7 +31,8 @@ const routes: Routes = [
     AttendanceComponent,
     AssessmentScheduleComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AttendanceRecordComponent
   ],
   imports: [
     BrowserModule,

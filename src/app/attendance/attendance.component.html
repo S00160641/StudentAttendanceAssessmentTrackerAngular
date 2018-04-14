@@ -1,13 +1,27 @@
 <mat-card>
   <h1>Attendance</h1>
+  <h3>Select group to take attendance record:</h3>
 
-  <mat-selection-list #shoes>
-    <mat-list-option *ngFor="let student of students">
-      {{student.firstName}} {{student.lastName}}
-    </mat-list-option>
-  </mat-selection-list>
+  <div class="students">
+    <mat-list role="list">
+      <mat-list-item *ngFor="let group of groups" role="listitem" (click)="openRecord(group)">
+        {{group.title}}
+      </mat-list-item>
+    </mat-list>
+  </div>
 
-  <p>
-    Options selected: {{students.selectedOptions.selected.length}}
-  </p>
+  <br>
+  <br>
+
+  <div class="students">
+    <mat-selection-list #attendees>
+      <mat-list-option *ngFor="let student of filteredStudents">
+        {{student.firstName}} {{student.lastName}}
+      </mat-list-option>
+    </mat-selection-list>
+
+    <p class="attendance">
+      Attendance: {{attendees.selectedOptions.selected.length / students.length | percent: '2.0-2'}}
+    </p>
+  </div>
 </mat-card>

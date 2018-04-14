@@ -1,0 +1,24 @@
+.assessments {
+    width: 400px;
+    text-align: left;
+}
+
+.assessment {
+    text-align: center;
+}
+
+.alignRight {
+    text-align: right;
+}
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+    height: 530px;
+    max-width: 700px;
+  }
+  
+  .mat-table {
+    overflow: auto;
+    max-height: 500px;
+  }
