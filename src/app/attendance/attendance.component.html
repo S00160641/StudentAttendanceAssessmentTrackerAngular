@@ -1,27 +1,13 @@
 <mat-card>
   <h1>Attendance</h1>
-  <h3>Select group to take attendance record:</h3>
 
+  <h3>Select a module: {{selectedModule}}</h3>
   <div class="students">
     <mat-list role="list">
-      <mat-list-item *ngFor="let group of groups" role="listitem" (click)="openRecord(group)">
-        {{group.title}}
+      <mat-list-item *ngFor="let module of modules" role="listitem"(click)="createRecord(module)">
+        {{module.title}}
       </mat-list-item>
     </mat-list>
   </div>
-
-  <br>
-  <br>
-
-  <div class="students">
-    <mat-selection-list #attendees>
-      <mat-list-option *ngFor="let student of filteredStudents">
-        {{student.firstName}} {{student.lastName}}
-      </mat-list-option>
-    </mat-selection-list>
-
-    <p class="attendance">
-      Attendance: {{attendees.selectedOptions.selected.length / students.length | percent: '2.0-2'}}
-    </p>
-  </div>
+  <button mat-raised-button [routerLink]="['/attendance-record']" >Submit</button>
 </mat-card>

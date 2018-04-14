@@ -1,17 +1,5 @@
-.assessments {
-    width: 400px;
-    text-align: left;
-}
-
-.assessment {
-    text-align: center;
-}
-
-.alignRight {
-    text-align: right;
-}
-
 .example-container {
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     height: 530px;

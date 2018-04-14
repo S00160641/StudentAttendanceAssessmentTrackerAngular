@@ -1,22 +1,5 @@
 <mat-card>
-    <h1>Assessments</h1><!-- 
-
-    <mat-list *ngFor="let assessment of assessments">
-        <div class="assessments">
-            <mat-list-item>
-                <h3 matLine>
-                    <span> {{assessment.description}} {{assessment.percentage | percent: '2.0-2' }} </span>
-                </h3>
-                <p class="alignRight">
-                    <span> {{assessment.dueDate}} </span>
-                    <span> {{assessment.location}} </span>
-                </p>
-                <p matLine>
-                    <span> {{assessment.moduleName}} </span>
-                </p>
-            </mat-list-item>
-        </div>
-    </mat-list> -->
+    <h1>Assessments</h1>
 
     <div class="example-container mat-elevation-z8">
         <mat-table #table [dataSource]="assessments">
