@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PercentPipe } from '@angular/common';
+import { AttendanceService } from '../shared/attendance.service';
 
 @Component({
   selector: 'app-attendance',
@@ -7,98 +8,73 @@ import { PercentPipe } from '@angular/common';
   styleUrls: ['./attendance.component.css']
 })
 export class AttendanceComponent implements OnInit {
-  students = [
-    {
-      firstName: 'Sophia',
-      lastName: 'Price',
-      group: 'Software Group A'
-    },
-    {
-      firstName: 'Daniel',
-      lastName: "O'Regan",
-      group: 'Software Group A'
-    },
-    {
-      firstName: 'Seafra',
-      lastName: "O'Grady",
-      group: 'Software Group A'
-    },
-    {
-      firstName: 'Niall',
-      lastName: 'McCafferty',
-      group: 'Software Group B'
-    },
-    {
-      firstName: 'Conor',
-      lastName: 'Booth',
-      group: 'Software Group B'
-    },
-    {
-      firstName: 'Michael',
-      lastName: 'Christie',
-      group: 'Software Group B'
-    },
-    {
-      firstName: 'Alan',
-      lastName: 'Sweeney',
-      group: 'Systems Group C'
-    },
-    {
-      firstName: 'Daniel',
-      lastName: "Ziki",
-      group: 'Systems Group C'
-    },
-    {
-      firstName: 'Josh',
-      lastName: "Gallagher",
-      group: 'Systems Group C'
-    },
-    {
-      firstName: 'Kamil',
-      lastName: 'Fedorko',
-      group: 'Systems Group D'
-    },
-    {
-      firstName: 'Daniel',
-      lastName: 'Kowalski',
-      group: 'Systems Group D'
-    },
-    {
-      firstName: 'Rebecca',
-      lastName: 'Murray',
-      group: 'Systems Group D'
-    }];
 
-    filteredStudents = [];
-
-  groups = [
-    {
-      title: 'Software Group A'
-    },
-    {
-      title: 'Software Group B'
-    },
-    {
-      title: 'Systems Group C'
-    },
-    {
-      title: 'Systems Group D'
-    }];
-
-  constructor() {
-    this.filteredStudents = this.students;
-  }
-
-  openRecord(group) {
-    this.filteredStudents = [];
-      for (let i = 0; i < this.students.length; i++) {
-        if (this.students[i].group == group.title) {
-          this.filteredStudents.push(this.students[i])
-        }        
-      } 
+  constructor(public _attendanceService: AttendanceService) {
   }
 
   ngOnInit() {
+    this._attendanceService.getStudents().subscribe(students => {
+      students.forEach(student => {
+        this.students.push(student);
+      });
+    })
   }
 
+  students: any[] = [];
+  tempStudents: any[] = [];
+  selectedModule;
+
+  modules = [
+    {
+      title: 'Maths',
+      enrolledStudents: [
+        '1', '2', '3', '4', '5', '6', '7', '8'
+      ]
+    },
+    {
+      title: 'English',
+      enrolledStudents: [
+        '1', '2', '3', '4', '5', '6', '7', '8'
+      ]
+    },
+    {
+      title: 'Irish',
+      enrolledStudents: [
+        '1', '2', '3', '4', '5', '6', '7', '8'
+      ]
+    },
+    {
+      title: 'History',
+      enrolledStudents: [
+        '1', '2', '3', '4', '5', '6', '7', '8'
+      ]
+    },
+    {
+      title: 'Geography',
+      enrolledStudents: [
+        '1', '2', '3', '4', '5', '6', '7', '8'
+      ]
+    },
+    {
+      title: 'Science',
+      enrolledStudents: [
+        '1', '2', '3', '4', '5', '6', '7', '8'
+      ]
+    }];
+
+  createRecord(selectedModule) {
+    this.selectedModule = selectedModule.title;
+    this._attendanceService.selectedModule = selectedModule.title;
+    this._attendanceService.students = [];
+    for (let i = 0; i < selectedModule.enrolledStudents.length; i++) {
+      for (let j = 0; j < this.students.length; j++) {
+        if (selectedModule.enrolledStudents[i] == this.students[j].id) {
+          this._attendanceService.students.push(this.students[j]);
+        }
+        else {
+          console.log("Not a match");
+        }
+      }
+    }
+  }
 }

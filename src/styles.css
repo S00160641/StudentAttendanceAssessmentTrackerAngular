@@ -3,8 +3,8 @@
 
 mat-card {
     text-align: center;
-    overflow: auto;
-    height: 82vh;
+    overflow: hidden;
+    min-height: 820px;
 }
 
 .form {
